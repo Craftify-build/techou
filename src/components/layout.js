@@ -1,23 +1,27 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import {Link} from 'gatsby'
+import 'sanitize.css'
 
-import { rhythm, scale } from "../utils/typography"
+import {rhythm, scale} from '../utils/typography'
+import {Logo} from '../components/typography'
+import styled from '@emotion/styled'
+
+const Header = styled.header`
+  height: 5.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const {location, title, children} = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
+        <Logo>
           <Link
             style={{
               boxShadow: `none`,
@@ -28,7 +32,7 @@ class Layout extends React.Component {
           >
             {title}
           </Link>
-        </h1>
+        </Logo>
       )
     } else {
       header = (
@@ -58,9 +62,10 @@ class Layout extends React.Component {
           marginRight: `auto`,
           maxWidth: rhythm(24),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          paddingTop: 0,
         }}
       >
-        <header>{header}</header>
+        <Header>{header}</Header>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
