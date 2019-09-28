@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Craftify`,
+    author: '',
+    description: `Craftify Blog`,
+    siteUrl: `https://techou.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: '',
     },
   },
   plugins: [
@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Craftify Blog`,
+        short_name: `Craftify Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#000`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/circle.svg`,
       },
     },
     `gatsby-plugin-offline`,
