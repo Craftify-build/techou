@@ -32,7 +32,7 @@ const HeroSectionWrapper = styled.section`
   min-height: calc(
     100vh - ${headerHeight} - ${contentGuideLineHeight} - ${contentTextBuffer}
   );
-  padding-top: 15vh;
+  padding-top: 20vh;
 `
 
 const FullWidthContainer = styled.div`
