@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'gatsby'
+import Footer from './footer'
 import 'sanitize.css'
 
 import {Logo} from '../components/typography'
 import styled from '@emotion/styled'
-import {css} from '@emotion/core'
 import {remCal} from '../components/typography'
 
 const headerHeight = '3.25rem'
@@ -52,16 +52,7 @@ class Layout extends React.Component {
       <Container>
         <Header>{header}</Header>
         <main>{children}</main>
-        <footer
-          css={css`
-            text-align: center;
-            font-size: ${remCal(14)};
-            margin-top: ${remCal(148)};
-            margin-bottom: ${remCal(92)};
-          `}
-        >
-          Crafted by <strong>Craftify</strong>
-        </footer>
+        <Footer />
       </Container>
     )
   }

@@ -13,6 +13,7 @@ import {
   Caption,
   remCal,
 } from '../components/typography'
+import Footer from '../components/footer'
 import '../global-style.scss'
 
 const BlogPostContainer = styled.section`
@@ -76,6 +77,7 @@ class BlogIndex extends React.Component {
             )
           })}
         </BlogPostContainer>
+        <Footer />
       </>
     )
   }
