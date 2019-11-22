@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 import {css} from '@emotion/core'
 import {remCal} from '../components/typography'
 
-const headerHeight = '5.3125rem'
+const headerHeight = '3.25rem'
 const Header = styled.header`
   position: fixed;
   width: 100%;

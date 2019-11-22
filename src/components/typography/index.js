@@ -13,7 +13,7 @@ const baseText = () => css`
 
 export const Logo = styled.h1`
   ${baseText};
-  font-size: 2.375rem;
+  font-size: 1.375rem;
   font-weight: 700;
   line-height: 90px;
 `
@@ -58,7 +58,15 @@ export const captionStyle = css`
   font-weight: 400;
 `
 
-const BaseTypo = styled.p``
+const baseTypoStyle = ({color = 'grey-100'}) => css`
+  color: var(${'--' + color});
+`
+const BaseTypo = styled.p`
+  ${baseTypoStyle};
+`
+export const BigContent = styled(BaseTypo)`
+  ${bigContentStyle};
+`
 export const MediumContent = styled(BaseTypo)`
   ${mediumContentStyle};
 `

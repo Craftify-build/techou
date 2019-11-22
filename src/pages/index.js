@@ -1,50 +1,81 @@
 import React from 'react'
 import {Link, graphql} from 'gatsby'
+import styled from '@emotion/styled'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import {rhythm} from '../utils/typography'
 import HeroSection from '../components/home/hero-section'
+import {
+  bigContentStyle,
+  MediumContent,
+  Caption,
+  remCal,
+} from '../components/typography'
+import '../global-style.scss'
+
+const BlogPostContainer = styled.section`
+  margin: ${remCal(92)} auto ${remCal(148)};
+  max-width: ${remCal(680)};
+  display: grid;
+  grid-gap: ${remCal(36)};
+`
+const Article = styled.article`
+  position: relative;
+  transition: box-shadow 0.2s ease-in-out;
+  padding: ${remCal(24)} ${remCal(32)};
+  border-radius: ${remCal(4)};
+  :hover {
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+  }
+`
+const BlogLink = styled(Link)`
+  ${bigContentStyle};
+  :hover {
+    color: var(--grey-100);
+  }
+  ::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+`
 
 class BlogIndex extends React.Component {
   render() {
     const {data} = this.props
-    const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
     return (
       <>
-        <Layout location={this.props.location} title={siteTitle}>
-          <SEO title="All posts" />
-          <HeroSection></HeroSection>
+        <SEO title="All posts" />
+        <HeroSection></HeroSection>
+
+        <BlogPostContainer>
           {posts.map(({node}) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
-              <article key={node.fields.slug}>
+              <Article key={node.fields.slug}>
                 <header>
-                  <h3
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                    }}
-                  >
-                    <Link style={{boxShadow: `none`}} to={node.fields.slug}>
-                      {title}
-                    </Link>
-                  </h3>
-                  <small>{node.frontmatter.date}</small>
+                  <Caption color="grey-200">{node.frontmatter.date}</Caption>
+                  <BlogLink to={node.fields.slug}>{title}</BlogLink>
                 </header>
                 <section>
-                  <p
+                  <MediumContent
+                    color="grey-200"
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
                     }}
                   />
                 </section>
-              </article>
+              </Article>
             )
           })}
-        </Layout>
+        </BlogPostContainer>
       </>
     )
   }

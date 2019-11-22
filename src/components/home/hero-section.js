@@ -22,17 +22,17 @@ const PitchSubHeading = styled.p`
   line-height: 72px;
 `
 
-const headerHeight = '5.3125rem'
-const contentGuideLineHeight = '4.0625rem'
+const headerHeight = '0rem'
+const contentGuideLineHeight = '8rem'
 const contentTextBuffer = '5rem'
 
 const HeroSectionWrapper = styled.section`
   max-width: 1000px;
   margin: 0 auto;
   min-height: calc(
-    100vh - ${headerHeight} - ${contentGuideLineHeight} - ${contentTextBuffer}
+    120vh - ${headerHeight} - ${contentGuideLineHeight} - ${contentTextBuffer}
   );
-  padding-top: 20vh;
+  padding-top: 30vh;
 `
 
 const FullWidthContainer = styled.div`
