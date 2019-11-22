@@ -5,18 +5,28 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react'
+import {useStaticQuery, graphql} from 'gatsby'
+import Image from 'gatsby-image'
 
-import { rhythm } from "../utils/typography"
+import styled from '@emotion/styled'
+import {MediumContent, Caption, remCal} from './typography'
+
+const BioContainer = styled.div`
+  display: grid;
+  grid-gap: ${remCal(36)};
+  grid-template-columns: auto 1fr;
+  background: #fafafa;
+  border-radius: ${remCal(4)};
+  padding: ${remCal(24)} ${remCal(36)};
+`
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      avatar: file(absolutePath: {regex: "/profile-pic.jpg/"}) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 56, height: 56) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -32,19 +42,13 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const {author, social} = data.site.siteMetadata
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
+    <BioContainer>
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
         style={{
-          marginRight: rhythm(1 / 2),
           marginBottom: 0,
           minWidth: 50,
           borderRadius: `100%`,
@@ -53,15 +57,11 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
-        Written by <strong>{author}</strong> who lives and works in San
-        Francisco building useful things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
-      </p>
-    </div>
+      <div>
+        <MediumContent>Rocky Balboa</MediumContent>
+        <Caption>Itailian staliion</Caption>
+      </div>
+    </BioContainer>
   )
 }
 

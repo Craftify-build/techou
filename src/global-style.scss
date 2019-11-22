@@ -1,0 +1,21 @@
+$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif;
+$primary-color: #333;
+
+html {
+  font: 125% $font-stack;
+  color: $primary-color;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}

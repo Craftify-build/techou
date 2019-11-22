@@ -1,16 +1,92 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import {Link, graphql} from 'gatsby'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import {rhythm, scale} from '../utils/typography'
+import styled from '@emotion/styled'
+import {
+  mediumHeadingStyle,
+  smallHeadingStyle,
+  bigContentStyle,
+  mediumContentStyle,
+  contentStyle,
+  captionStyle,
+  remCal,
+} from '../components/typography'
+import '../global-style.scss'
+
+const Section = styled.section`
+  font-size: 125%;
+  p {
+    ${contentStyle};
+  }
+  h1 {
+    ${bigContentStyle};
+    margin-top: ${remCal(56)};
+    margin-bottom: ${remCal(12)};
+  }
+  h2 {
+    ${mediumContentStyle};
+    margin-top: ${remCal(24)};
+    margin-bottom: ${remCal(8)};
+  }
+  ul,
+  ol {
+    ${contentStyle};
+    padding-left: 1rem;
+    margin-top: ${remCal(24)};
+    margin-bottom: ${remCal(36)};
+
+    ul,
+    ol {
+      margin: 0;
+    }
+
+    li {
+      padding-left: 0.5rem;
+    }
+  }
+`
+
+const ArticleTitle = styled.h1`
+  ${mediumHeadingStyle};
+  margin-bottom: ${remCal(8)};
+`
+const ArticleSubTitle = styled.h2`
+  ${smallHeadingStyle};
+  margin-bottom: ${remCal(36)};
+`
+const PublishAt = styled.time`
+  ${captionStyle};
+  margin-bottom: ${remCal(8)};
+`
+
+const HR = styled.hr`
+  height: 0;
+  border: 1px solid #eaeaea;
+  width: ${remCal(148)};
+  margin-top: ${remCal(148)};
+  margin-bottom: ${remCal(56)};
+`
+const Footer = styled.footer`
+  margin-bottom: ${remCal(148)};
+`
+const EndingSection = () => (
+  <>
+    <HR />
+    <Footer>
+      <Bio />
+    </Footer>
+  </>
+)
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+    const {previous, next} = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -20,35 +96,13 @@ class BlogPostTemplate extends React.Component {
         />
         <article>
           <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}
-            >
-              {post.frontmatter.date}
-            </p>
+            <PublishAt>{post.frontmatter.date}</PublishAt>
+            <ArticleTitle>{post.frontmatter.title}</ArticleTitle>
+            <ArticleSubTitle>{post.frontmatter.description}</ArticleSubTitle>
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr
-            style={{
-              marginBottom: rhythm(1),
-            }}
-          />
-          <footer>
-            <Bio />
-          </footer>
+          <Section dangerouslySetInnerHTML={{__html: post.html}} />
         </article>
-
+        <EndingSection></EndingSection>
         <nav>
           <ul
             style={{
@@ -90,7 +144,7 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
       id
       excerpt(pruneLength: 160)
       html

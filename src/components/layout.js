@@ -2,9 +2,10 @@ import React from 'react'
 import {Link} from 'gatsby'
 import 'sanitize.css'
 
-import {rhythm, scale} from '../utils/typography'
 import {Logo} from '../components/typography'
 import styled from '@emotion/styled'
+import {css} from '@emotion/core'
+import {remCal} from '../components/typography'
 
 const headerHeight = '5.3125rem'
 const Header = styled.header`
@@ -19,6 +20,13 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+const Container = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: ${remCal(680)};
+  padding-top: calc(${headerHeight} + ${remCal(56)});
 `
 
 class Layout extends React.Component {
@@ -41,23 +49,20 @@ class Layout extends React.Component {
       </Logo>
     )
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-          paddingTop: headerHeight,
-        }}
-      >
+      <Container>
         <Header>{header}</Header>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <footer
+          css={css`
+            text-align: center;
+            font-size: ${remCal(14)};
+            margin-top: ${remCal(148)};
+            margin-bottom: ${remCal(92)};
+          `}
+        >
+          Crafted by <strong>Craftify</strong>
         </footer>
-      </div>
+      </Container>
     )
   }
 }
