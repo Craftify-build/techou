@@ -3,7 +3,7 @@ title: Achieving more DevOps by removing Devops [0]
 date: '2019-11-25'
 author: Wasin Watthanasrisong
 author_description: DevOps guy
-avatar_path_name: profile-pic.jpg
+avatar_path_name: wasin.jpg
 description: ทีม DevOps
 ---
 
