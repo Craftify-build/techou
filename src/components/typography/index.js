@@ -21,6 +21,7 @@ export const Logo = styled.h1`
 export const contentStyle = css`
   font-size: ${remCal(18)};
   line-height: ${remCal(30)};
+  font-weight: 300;
 `
 export const boldContentStyle = css`
   font-size: ${remCal(18)};
