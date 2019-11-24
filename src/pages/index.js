@@ -46,10 +46,14 @@ const BlogLink = styled(Link)`
   }
 `
 
+const isUnlisted = ({ node }) =>
+  /\/content\/blog\/_.+/.test(node.fileAbsolutePath)
+
 class BlogIndex extends React.Component {
   render() {
     const {data} = this.props
     const posts = data.allMarkdownRemark.edges
+      .filter(post => !isUnlisted(post))
 
     return (
       <>
@@ -104,6 +108,7 @@ export const pageQuery = graphql`
             title
             description
           }
+          fileAbsolutePath
         }
       }
     }
