@@ -74,15 +74,18 @@ const HR = styled.hr`
 const Footer = styled.footer`
   margin-bottom: ${remCal(148)};
 `
-const EndingSection = ({author, authorDescription, avatarPathName}) => (
+const EndingSection = ({authors}) => (
   <>
     <HR />
     <Footer>
-      <Bio
-        author={author}
-        authorDescription={authorDescription}
-        avatarPathName={avatarPathName}
-      />
+      {authors.map(({ id, name, description, profilePicture }) => 
+        <Bio
+          key={id}
+          author={name}
+          authorDescription={description}
+          avatarPathName={profilePicture}
+        />
+      )}
     </Footer>
   </>
 )
@@ -91,7 +94,9 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const allAuthors = this.props.data.site.siteMetadata.authors
     const {previous, next} = this.props.pageContext
+    const hasIdIn = ids => author => ids.find(id => id === author.id)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -108,9 +113,7 @@ class BlogPostTemplate extends React.Component {
           <Section dangerouslySetInnerHTML={{__html: post.html}} />
         </article>
         <EndingSection
-          author={post.frontmatter.author}
-          authorDescription={post.frontmatter.author_description}
-          avatarPathName={post.frontmatter.avatar_path_name}
+          authors={allAuthors.filter(hasIdIn(post.frontmatter.authors))}
         />
         <nav>
           <ul
@@ -150,7 +153,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+        authors {
+          id
+          name
+          description
+          profilePicture
+        }
       }
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
@@ -161,6 +169,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        authors
         author
         author_description
         avatar_path_name

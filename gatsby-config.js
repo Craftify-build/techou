@@ -2,7 +2,20 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   siteMetadata: {
     title: `Craftify`,
-    author: '',
+    authors: [
+      {
+        id: 'pun',
+        name: 'Wasin Watthanasrisong (Pun)',
+        description: 'The Devops Guy',
+        profilePicture: 'wasin.jpg'
+      },
+      {
+        id: 'boss',
+        name: 'Supanat Potiwarakorn (Boss)',
+        description: 'The Whatever',
+        profilePicture: 'supanat.jpg'
+      },
+    ],
     description: `Craftify Blog`,
     siteUrl: `https://craftify.co/`,
     social: {

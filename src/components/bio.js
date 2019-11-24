@@ -29,7 +29,6 @@ const Bio = ({author, authorDescription, avatarPathName}) => {
       }
       site {
         siteMetadata {
-          author
           social {
             twitter
           }

@@ -1,10 +1,10 @@
 ---
 title: Achieving more DevOps by removing Devops [0]
-date: '2019-11-25'
-author: Wasin Watthanasrisong
-author_description: DevOps guy
-avatar_path_name: wasin.jpg
 description: ทีม DevOps
+date: '2019-11-25'
+authors:
+  - pun
+  - boss
 ---
 
 <sup style="color: grey">_*เรื่องนี้เป็นเรื่องที่แต่งขึ้นเท่านั้น ไม่เกี่ยวข้องกับบุคคล สมาคม หรือเหตุการณ์จริงใดๆ ทั้งสิ้น_</sup>
