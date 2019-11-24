@@ -21,6 +21,7 @@ const Section = styled.section`
   font-size: 125%;
   p {
     ${contentStyle};
+    margin-bottom: 1rem;
   }
   h1 {
     ${bigContentStyle};
