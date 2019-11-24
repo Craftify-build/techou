@@ -170,9 +170,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         authors
-        author
-        author_description
-        avatar_path_name
+        description
       }
     }
   }
