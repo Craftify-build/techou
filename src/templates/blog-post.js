@@ -78,14 +78,14 @@ const EndingSection = ({authors}) => (
   <>
     <HR />
     <Footer>
-      {authors.map(({ id, name, description, profilePicture }) => 
+      {authors.map(({id, name, description, profilePicture}) => (
         <Bio
           key={id}
           author={name}
           authorDescription={description}
           avatarPathName={profilePicture}
         />
-      )}
+      ))}
     </Footer>
   </>
 )

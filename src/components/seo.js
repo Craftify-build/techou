@@ -56,7 +56,7 @@ function SEO({description, lang, meta, title}) {
         },
         {
           name: `twitter:creator`,
-          content: 'Craftify team'
+          content: 'Craftify team',
         },
         {
           name: `twitter:title`,

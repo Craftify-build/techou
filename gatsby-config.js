@@ -7,13 +7,13 @@ module.exports = {
         id: 'pun',
         name: 'Wasin Watthanasrisong (Pun)',
         description: 'The Devops Guy',
-        profilePicture: 'wasin.jpg'
+        profilePicture: 'wasin.jpg',
       },
       {
         id: 'boss',
         name: 'Supanat Potiwarakorn (Boss)',
         description: 'The Whatever',
-        profilePicture: 'supanat.jpg'
+        profilePicture: 'supanat.jpg',
       },
     ],
     description: `Craftify Blog`,
@@ -81,12 +81,16 @@ module.exports = {
         icon: `content/assets/circle.svg`,
       },
     },
-    ... (isProd ? [{
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GA_TRACKING_ID || '',
-      },
-    }] : []),
+    ...(isProd
+      ? [
+          {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+              trackingId: process.env.GA_TRACKING_ID || '',
+            },
+          },
+        ]
+      : []),
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
