@@ -24,8 +24,8 @@ const Header = styled.header`
 `
 
 const Container = styled.div`
-  padding-left: 0.7rem;
-  padding-right: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
   max-width: ${remCal(680)};
