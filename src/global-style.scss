@@ -6,8 +6,13 @@ html {
   --grey-200: #666;
   --grey-300: #999;
 
-  font: 125% $font-stack;
+  font-size: 100%; // = 16 pixels in most browsers
+  font-family: $font-stack;
   color: var(--grey-100);
+
+  @media (min-width: 768px) {
+    font-size: 112.5%; // = 18 pixels in most browsers
+  }
 }
 
 p {
