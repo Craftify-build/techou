@@ -1,10 +1,3 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 import Image from 'gatsby-image'
@@ -21,13 +14,16 @@ const BioContainer = styled.div`
   padding: ${remCal(24)} ${remCal(36)};
 `
 
-const Bio = () => {
+const Bio = ({author, authorDescription, avatarPathName}) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: {regex: "/profile-pic.jpg/"}) {
-        childImageSharp {
-          fixed(width: 56, height: 56) {
-            ...GatsbyImageSharpFixed
+      allImageSharp {
+        edges {
+          node {
+            fixed(width: 56, height: 56) {
+              ...GatsbyImageSharpFixed
+              originalName
+            }
           }
         }
       }
@@ -42,11 +38,14 @@ const Bio = () => {
     }
   `)
 
-  const {author, social} = data.site.siteMetadata
+  const image = data.allImageSharp.edges.find(
+    ({node}) => node.fixed.originalName === avatarPathName,
+  )
+
   return (
     <BioContainer>
       <Image
-        fixed={data.avatar.childImageSharp.fixed}
+        fixed={image.node.fixed}
         alt={author}
         style={{
           marginBottom: 0,
@@ -58,8 +57,8 @@ const Bio = () => {
         }}
       />
       <div>
-        <MediumContent>Rocky Balboa</MediumContent>
-        <Caption>Itailian staliion</Caption>
+        <MediumContent>{author}</MediumContent>
+        <Caption>{authorDescription}</Caption>
       </div>
     </BioContainer>
   )

@@ -74,11 +74,15 @@ const HR = styled.hr`
 const Footer = styled.footer`
   margin-bottom: ${remCal(148)};
 `
-const EndingSection = () => (
+const EndingSection = ({author, authorDescription, avatarPathName}) => (
   <>
     <HR />
     <Footer>
-      <Bio />
+      <Bio
+        author={author}
+        authorDescription={authorDescription}
+        avatarPathName={avatarPathName}
+      />
     </Footer>
   </>
 )
@@ -103,7 +107,11 @@ class BlogPostTemplate extends React.Component {
           </header>
           <Section dangerouslySetInnerHTML={{__html: post.html}} />
         </article>
-        <EndingSection></EndingSection>
+        <EndingSection
+          author={post.frontmatter.author}
+          authorDescription={post.frontmatter.author_description}
+          avatarPathName={post.frontmatter.avatar_path_name}
+        />
         <nav>
           <ul
             style={{
@@ -153,6 +161,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        author
+        author_description
+        avatar_path_name
       }
     }
   }
