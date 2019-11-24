@@ -1,6 +1,6 @@
 ---
-title: Achieving more DevOps by removing Devops [0]
-description: ทีม DevOps
+title: Achieving more DevOps by removing DevOps | Prelude
+description: Sometimes ... in order to survive, you need to throw someone out of the ship.
 date: '2019-11-25'
 authors:
   - pun
