@@ -14,7 +14,8 @@ const Header = styled.header`
   top: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  z-index: 1;
 
   height: ${headerHeight};
   display: flex;
