@@ -17,7 +17,7 @@ module.exports = {
       },
     ],
     description: `Craftify Blog`,
-    siteUrl: `https://craftify.co/`,
+    siteUrl: `https://craftify.io/`,
     social: {
       twitter: '',
     },
