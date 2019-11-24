@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import {css} from '@emotion/core'
+import {containerLevel1} from '../pattern'
 
 const baseText = () => css`
   font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -27,8 +28,6 @@ const contentGuideLineHeight = '8rem'
 const contentTextBuffer = '5rem'
 
 const HeroSectionWrapper = styled.section`
-  max-width: 1000px;
-  margin: 0 auto;
   min-height: calc(
     120vh - ${headerHeight} - ${contentGuideLineHeight} - ${contentTextBuffer}
   );
@@ -36,8 +35,7 @@ const HeroSectionWrapper = styled.section`
 `
 
 const FullWidthContainer = styled.div`
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  ${containerLevel1};
 `
 
 const ContentGuideLine = styled.div`

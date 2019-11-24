@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import Footer from './footer'
+import {sidePadding} from './pattern'
+import {containerLevel2} from './pattern'
 import 'sanitize.css'
 
 import {Logo} from '../components/typography'
@@ -24,12 +26,8 @@ const Header = styled.header`
 `
 
 const Container = styled.div`
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: ${remCal(680)};
-  padding-top: calc(${headerHeight} + ${remCal(56)});
+  ${containerLevel2};
+  margin-top: calc(${headerHeight} + ${remCal(56)});
 `
 
 class Layout extends React.Component {

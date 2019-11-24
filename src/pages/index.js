@@ -2,10 +2,7 @@ import React from 'react'
 import {Link, graphql} from 'gatsby'
 import styled from '@emotion/styled'
 
-import Bio from '../components/bio'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
-import {rhythm} from '../utils/typography'
 import HeroSection from '../components/home/hero-section'
 import {
   bigContentStyle,
@@ -58,7 +55,7 @@ class BlogIndex extends React.Component {
     return (
       <>
         <SEO title="All posts" />
-        <HeroSection></HeroSection>
+        <HeroSection />
 
         <BlogPostContainer>
           {posts.map(({node}) => {
