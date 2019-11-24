@@ -1,7 +1,5 @@
 import {css} from '@emotion/core'
-
-const BASE_FONT = 18
-export const remCal = pxUnit => `${pxUnit / BASE_FONT}rem`
+import {remCal} from './typography'
 
 const bp = {
   tablet: 768,

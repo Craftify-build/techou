@@ -2,6 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import {css} from '@emotion/core'
 import {containerLevel1} from '../pattern'
+import {mediaQuery} from '../pattern'
+import {remCal} from '../typography'
 
 const baseText = () => css`
   font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -12,15 +14,25 @@ const baseText = () => css`
 const PitchHeading = styled.h1`
   ${baseText};
   font-weight: 700;
-  font-size: 100px;
-  line-height: 130px;
+  font-size: ${remCal(76)};
+  line-height: ${remCal(100)};
+
+  ${mediaQuery('tablet')} {
+    font-size: ${remCal(100)};
+    line-height: ${remCal(130)};
+  }
 `
 
 const PitchSubHeading = styled.p`
   ${baseText};
   font-weight: 400;
-  font-size: 47px;
-  line-height: 72px;
+  font-size: ${remCal(29)};
+  line-height: ${remCal(40)};
+
+  ${mediaQuery('tablet')} {
+    font-size: ${remCal(47)};
+    line-height: ${remCal(72)};
+  }
 `
 
 const headerHeight = '0rem'
