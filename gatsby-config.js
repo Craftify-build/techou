@@ -1,9 +1,10 @@
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   siteMetadata: {
     title: `Craftify`,
     author: '',
     description: `Craftify Blog`,
-    siteUrl: `https://techou.netlify.com/`,
+    siteUrl: `https://craftify.co/`,
     social: {
       twitter: '',
     },
@@ -67,6 +68,12 @@ module.exports = {
         icon: `content/assets/circle.svg`,
       },
     },
+    ... (isProd ? [{
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID || '',
+      },
+    }] : []),
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
